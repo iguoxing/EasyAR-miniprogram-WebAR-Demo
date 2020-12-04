@@ -1,0 +1,73 @@
+.container {
+    width: 400rpx;
+    height: 360rpx;
+    position: relative;
+}
+
+.line {
+    position: absolute;
+    width: 400rpx;
+    height: 12rpx;
+    background: linear-gradient(90deg, rgba(243, 152, 0, 0) 0%, rgba(243, 152, 0, 1) 20%, rgba(243, 152, 0, 1) 80%, rgba(243, 152, 0, 0) 100%);
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.text {
+    text-align: center;
+    font-size: 32rpx;
+    font-weight: 600;
+    color: #FFFFFF;
+    text-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.5);
+}
+
+.loading {
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.loading-ani {
+    width: 12rpx;
+    height: 100rpx;
+    background: #f39800;
+    display: inline-block;
+    margin: 0 10rpx;
+    animation: loading-ani linear 1s infinite;
+}
+
+.loading-ani:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.loading-ani:nth-child(2) {
+    animation-delay: -.15s;
+}
+
+.loading-ani:nth-child(3) {
+    animation-delay: -.3s;
+}
+
+.loading-ani:nth-child(4) {
+    animation-delay: -.45s;
+}
+
+.loading-ani:nth-child(5) {
+    animation-delay: -.6s;
+}
+
+@keyframes loading-ani {
+    0%, 100%, 60% {
+        transform: scaleY(1)
+    }
+
+    30% {
+        transform: scaleY(3)
+    }
+}

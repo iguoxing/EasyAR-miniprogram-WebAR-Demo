@@ -1,0 +1,11 @@
+<view class="container">
+    <view class="line"></view>
+    <view class="loading">
+        <view class="loading-ani"></view>
+        <view class="loading-ani"></view>
+        <view class="loading-ani"></view>
+        <view class="loading-ani"></view>
+        <view class="loading-ani"></view>
+    </view>
+</view>
+<view wx:if="{{text}}" class="text">{{text}}</view>

@@ -1,0 +1,44 @@
+<!-- 相机组件，放在UI最底层显示相机内容 -->
+<camera frame-size="medium"
+        bindinitdone="onCameraInit"
+        mode="normal"
+        device-position="back"
+        resolution="high"
+        flash="off"/>
+<!-- canvas组件，用于进行图片压缩，位置在屏幕外，不可见 -->
+<canvas type="2d"
+        id="capture"
+        style="width:1px; height: 1px;"/>
+
+<view id="overlay" wx:if="{{showOverlay}}">
+    <view id="overlay-top">
+        <view id="title">微信小程序AR</view>
+        <image id="logo" src="/images/logo@2x.png"></image>
+        <view id="desc">帮助您迅速在微信小程序中实现扫描识别图呈现3D动画模型、视频、图片、文字、UI按钮等效果，并且支持3D模型交互。区别于原生 AR 应用，具有模式轻、部署快、传播性强等特点。</view>
+    </view>
+    <view id="overlay-bottom">
+        <image id="experience" class="primary-button" src="/images/experience@2x.png" bind:tap="experience"></image>
+        <image id="scan" class="primary-button" src="/images/scan@2x.png" bind:tap="scan"></image>
+        <view id="download" class="primary-button" bind:tap="download">保存识别图</view>
+        <view id="email" class="secondary-button">support@sightp.com</view>
+    </view>
+</view>
+<image wx:if="{{!showOverlay}}" src="/images/arrow_left.png" bind:tap="back" style="position: absolute; width: 60rpx; height: 60rpx; top: 30rpx; left: 30rpx; z-index: 30;"></image>
+
+<view id="loading" wx:if="{{showLoading}}">
+    <loading text="{{showLoadingText}}"></loading>
+</view>
+
+<view id="content" wx:if="{{showContent}}">
+    <view wx:if="{{SELECT_TYPE.IMAGE === selectType}}">
+        <image src="/images/namecard.jpg" style="width: 500rpx; height: 300rpx;"></image>
+    </view>
+    <view wx:if="{{SELECT_TYPE.VIDEO === selectType}}">
+        <video src="https://mp.easyar.cn/video/yuyuan1.mp4" autoplay="{{true}}" controls="{{false}}" loop="{{true}}" style="width: 714rpx; height: 400rpx;"></video>
+    </view>
+</view>
+
+<view id="select" wx:if="{{showContent}}">
+    <view class="select {{SELECT_TYPE.IMAGE === selectType ? 'selected': ''}}" data-contentType="{{SELECT_TYPE.IMAGE}}" bind:tap="selectContent">图片</view>
+    <view class="select {{SELECT_TYPE.VIDEO === selectType ? 'selected': ''}}" data-contentType="{{SELECT_TYPE.VIDEO}}" bind:tap="selectContent">视频</view>
+</view>
